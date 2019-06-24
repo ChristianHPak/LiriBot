@@ -1,0 +1,26 @@
+{
+  "name": "LiriBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Liribot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristianHPak/LiriBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristianHPak/LiriBot/issues"
+  },
+  "homepage": "https://github.com/ChristianHPak/LiriBot#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "inquirer": "^6.4.1",
+    "node-spotify-api": "^1.1.1"
+  }
+}

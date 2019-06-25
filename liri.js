@@ -18,6 +18,7 @@ function concert_this() { //works
 
     // Then create a response with axios to the queryUrl
     axios.get(queryUrl).then(function (response) {
+        console.log(response)
         console.log("=============================");
         console.log("Venue: " + response.data[0].venue.name);
         console.log("City: " + response.data[0].venue.city);
@@ -30,48 +31,88 @@ function concert_this() { //works
 function spotify_this(second_command) { //works
     var spotify = new Spotify(keys.spotify);
 
-    var queryUrl = 'https://api.spotify.com/v1/search?type=track&limit=1&q=' + second_command;
+    console.log(second_command)
+    var newCom = second_command.split("+").join(" ")
+    console.log(newCom)
 
-    //     spotify
-    //   .search({ type: 'track', query: second_command })
-    //   .then(function(response) {
-    //     console.log(JSON.stringify(response, null, 4));
-    //   })
-    //   .catch(function(err) {
-    //     console.log(err);
-    //   });
+    // var queryUrl = 'https://api.spotify.com/v1/search?type=track&limit=1&q=' + second_command;
 
     spotify
-        .request(queryUrl)
+        .search({
+            type: 'track',
+            query: newCom
+        })
         .then(function (response) {
-            var songData = response.tracks.items[0];
-            console.log("=============================");
-            //artist
-            console.log("Artist: " + songData.artists[0].name);
-            //song name
-            console.log("Song: " + songData.name);
-            //spotify preview link
-            console.log("Preview URL: " + songData.preview_url);
-            //album name
-            console.log("Album: " + songData.album.name);
-            console.log("=============================");
+            console.log(response)
+            if (second_command === "The Sign") {
+                var songData = response.tracks.items[5];
+                console.log("=============================");
+                //artist
+                console.log("Artist: " + songData.artists[0].name);
+                //song name
+                console.log("Song: " + songData.name);
+                //spotify preview link
+                console.log("Preview URL: " + songData.preview_url);
+                //album name
+                console.log("Album: " + songData.album.name);
+                console.log("=============================");
+            } else {
+                var songData = response.tracks.items[0];
+                console.log("=============================");
+                //artist
+                console.log("Artist: " + songData.artists[0].name);
+                //song name
+                console.log("Song: " + songData.name);
+                //spotify preview link
+                console.log("Preview URL: " + songData.preview_url);
+                //album name
+                console.log("Album: " + songData.album.name);
+                console.log("=============================");
+            }
         })
         .catch(function (err) {
-            console.error('Error occurred: ' + err);
+            console.log(err);
         });
+
+    //     spotify
+    //         .request(queryUrl)
+    //         .then(function (response) {
+    //             var songData = response.tracks.items[0];
+    //             console.log("=============================");
+    //             //artist
+    //             console.log("Artist: " + songData.artists[0].name);
+    //             //song name
+    //             console.log("Song: " + songData.name);
+    //             //spotify preview link
+    //             console.log("Preview URL: " + songData.preview_url);
+    //             //album name
+    //             console.log("Album: " + songData.album.name);
+    //             console.log("=============================");
+    //         })
+    //         .catch(function (err) {
+    //             console.error('Error occurred: ' + err);
+    //         });
 }
 
-function movie_this() { // works
+function movie_this(second_command) { // works
     // Run a request with axios to the OMDB API
     var queryUrl = "http://www.omdbapi.com/?t=" + second_command + "&y=&plot=short&apikey=trilogy";
 
+
     // Then create a response with axios to the queryUrl
     axios.get(queryUrl).then(function (response) {
-
         if (second_command === "Mr.Nobody" || second_command === "Mr.+Nobody") {
             console.log("=============================");
             console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
             console.log("It's on Netflix!");
+            console.log("Title: " + response.data.Title);
+            console.log("Year: " + response.data.Year);
+            console.log("Rated: " + response.data.imdbRating);
+            console.log("Country: " + response.data.Country);
+            console.log("Language: " + response.data.Language);
+            console.log("Plot: " + response.data.Plot);
+            console.log("Actors: " + response.data.Actors);
+            console.log("Rotten Tomatoes: " + response.data.Ratings[1].Value);
             console.log("=============================");
         } else {
             console.log("=============================");
@@ -112,12 +153,16 @@ switch (user_command) {
         if (second_command) {
             spotify_this(second_command);
         } else {
-            spotify_this("I want it that way");
+            spotify_this("The Sign");
         }
         break;
 
     case "movie-this":
-        movie_this();
+        if (second_command) {
+            movie_this(second_command);
+        } else {
+            movie_this("Mr.Nobody");
+        }
         break;
 
     case "do-what-it-says":

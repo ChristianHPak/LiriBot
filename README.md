@@ -35,6 +35,6 @@ do-what-it-says
 
 ### Screenshot
 ![image](https://github.com/ChristianHPak/LiriBot/blob/master/images/Screen%20Shot%202019-06-25%20at%2010.02.59.png?raw=true)
-
+![image](https://github.com/ChristianHPak/LiriBot/blob/master/images/Screen%20Shot%202019-06-25%20at%2016.14.29.png?raw=true)
 ### Author
 Christian Pak

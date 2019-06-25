@@ -18,9 +18,11 @@ function concert_this() { //works
 
     // Then create a response with axios to the queryUrl
     axios.get(queryUrl).then(function (response) {
+        console.log("=============================");
         console.log("Venue: " + response.data[0].venue.name);
         console.log("City: " + response.data[0].venue.city);
         console.log("Date of the event: " + moment(response.data[0].datetime).format("MM/DD/YYYY"));
+        console.log("=============================");
     })
 }
 
@@ -43,7 +45,7 @@ function spotify_this(second_command) { //works
         .request(queryUrl)
         .then(function (response) {
             var songData = response.tracks.items[0];
-            console.log(songData)
+            console.log("=============================");
             //artist
             console.log("Artist: " + songData.artists[0].name);
             //song name
@@ -52,7 +54,7 @@ function spotify_this(second_command) { //works
             console.log("Preview URL: " + songData.preview_url);
             //album name
             console.log("Album: " + songData.album.name);
-            console.log("-----------------------");
+            console.log("=============================");
         })
         .catch(function (err) {
             console.error('Error occurred: ' + err);
@@ -67,10 +69,12 @@ function movie_this() { // works
     axios.get(queryUrl).then(function (response) {
 
         if (second_command === "Mr.Nobody" || second_command === "Mr.+Nobody") {
-            console.log("-----------------------");
+            console.log("=============================");
             console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
             console.log("It's on Netflix!");
+            console.log("=============================");
         } else {
+            console.log("=============================");
             console.log("Title: " + response.data.Title);
             console.log("Year: " + response.data.Year);
             console.log("Rated: " + response.data.imdbRating);
@@ -79,6 +83,7 @@ function movie_this() { // works
             console.log("Plot: " + response.data.Plot);
             console.log("Actors: " + response.data.Actors);
             console.log("Rotten Tomatoes: " + response.data.Ratings[1].Value);
+            console.log("=============================");
         }
 
     })

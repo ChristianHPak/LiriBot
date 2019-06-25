@@ -23,3 +23,12 @@ do-what-it-says
 
 ### Technologies Utilized
 - Node.js
+- JavaScript
+- Spotify Api
+- OMDB Api
+- BandsInTown Api
+- NPM axios
+- NPM dotenv
+- NPM inquirer
+- NPM moment
+- NPM node-spotify-api

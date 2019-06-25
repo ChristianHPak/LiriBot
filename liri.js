@@ -10,9 +10,6 @@ var moment = require("moment")
 // varriables user commands
 var user_command = process.argv[2];
 var second_command = process.argv.splice(3).join("+");
-console.log(second_command)
-
-
 
 function concert_this() { //works
 
@@ -65,7 +62,6 @@ function spotify_this(second_command) { //works
 function movie_this() { // works
     // Run a request with axios to the OMDB API
     var queryUrl = "http://www.omdbapi.com/?t=" + second_command + "&y=&plot=short&apikey=trilogy";
-    console.log(queryUrl)
 
     // Then create a response with axios to the queryUrl
     axios.get(queryUrl).then(function (response) {

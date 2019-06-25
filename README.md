@@ -32,3 +32,6 @@ do-what-it-says
 - NPM inquirer
 - NPM moment
 - NPM node-spotify-api
+
+### Screenshot
+![image](https://github.com/ChristianHPak/LiriBot/blob/master/images/Screen%20Shot%202019-06-25%20at%2010.02.59.png?raw=true)

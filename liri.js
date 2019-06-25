@@ -18,7 +18,6 @@ function concert_this() { //works
 
     // Then create a response with axios to the queryUrl
     axios.get(queryUrl).then(function (response) {
-        console.log(response)
         console.log("=============================");
         console.log("Venue: " + response.data[0].venue.name);
         console.log("City: " + response.data[0].venue.city);
@@ -31,9 +30,7 @@ function concert_this() { //works
 function spotify_this(second_command) { //works
     var spotify = new Spotify(keys.spotify);
 
-    console.log(second_command)
     var newCom = second_command.split("+").join(" ")
-    console.log(newCom)
 
     // var queryUrl = 'https://api.spotify.com/v1/search?type=track&limit=1&q=' + second_command;
 
@@ -43,7 +40,6 @@ function spotify_this(second_command) { //works
             query: newCom
         })
         .then(function (response) {
-            console.log(response)
             if (second_command === "The Sign") {
                 var songData = response.tracks.items[5];
                 console.log("=============================");
@@ -136,7 +132,6 @@ function do_what() { //works
     fs.readFile("./random.txt", "utf8", function (err, response) {
         if (err) return console.log("An Error Occurred: ", err)
         var song = response.split(',')
-        console.log(song[1])
 
         spotify_this(song[1])
     });

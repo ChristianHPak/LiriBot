@@ -19,7 +19,7 @@ do-what-it-says
 ### Deployment
 1. Clone repo
 2. Run ```npm install```
-3. At command prompt, run ```node liri.js <command>```
+3. At command prompt, run ```node liri.js <command> <song, movie, or artist name>```
 
 ### Technologies Utilized
 - Node.js
